@@ -1,6 +1,9 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
 module.exports = {
-  mode: "production",
-  entry: "./src/index.ts",
+  mode: "development",
+  entry: "./src/index.js",
   output: {
     clean: true,
     filename: 'bundle.js'
@@ -10,8 +13,18 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['css-loader']
       }
     ]
-  }
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin(
+      {
+        template: './public/index.html'
+      }
+    )
+  ],
+
+  // devSer
 };
